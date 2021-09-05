@@ -2,8 +2,13 @@ import express from 'express'
 import bodyParser from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-// import {MONGODB} from '../config';
+// import {MONGODB} from '../server/config.js';
+import postRoutes from './routes/posts.js'
+
 const app = express();
+
+// every route inside of the post routes will start with posts
+app.use('/posts', postRoutes)
 
 app.use(bodyParser.json({limit: "30mb", extended:true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended:true}));
