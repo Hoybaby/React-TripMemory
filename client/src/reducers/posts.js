@@ -1,4 +1,4 @@
- const reducer = (posts = [], action) => {
+export default (posts = [], action) => {
     // based
 
     // in reducers, the states always need to be equal to something.
