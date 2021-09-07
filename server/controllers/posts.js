@@ -1,4 +1,4 @@
-// this will handle all the handlers for the posts.js
+// this will handle all the handlers for the posts.js in routes
 
 import PostMessage from "../models/postMessage.js";
 
