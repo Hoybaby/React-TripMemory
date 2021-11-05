@@ -25,14 +25,14 @@ function App() {
   return (
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography lassName={classes.heading }variant="h2" align="center">
+        <Typography className={classes.heading }variant="h2" align="center">
           Memories
-          <img lassName={classes.image} src={memories} alt="memories" height="60"/>
+          <img className={classes.image} src={memories} alt="memories" height="60"/>
         </Typography>
       </AppBar>
         <Grow in>
           <Container>
-            <Grid container justify="space-between" alighnItems="stretch" spacing={3}>
+            <Grid container justifyContent="space-between" alignItems="stretch" spacing={3}>
               {/* the xs means for small devices it will take it all up */}
               <Grid item xs={12} sm={7}>
                 <Posts/>
