@@ -29,7 +29,7 @@ const Form =() => {
                     fullWidth
                     value={postData.creator}
                     // the whole data will be stored in the state and each object key will be a different text field
-                    onChange={} 
+                    onChange={(e) => setPostData({...postData, creator: e.target.value})}
                 /> 
             </form>
         </Paper>
