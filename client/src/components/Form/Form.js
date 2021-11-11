@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import FileBase from 'react-file-base64';
 
 
 import useStyles from './styles';
@@ -57,7 +58,11 @@ const Form =() => {
                     value={postData.tags}
                     // the whole data will be stored in the state and each object key will be a different text field
                     onChange={(e) => setPostData({...postData, tags: e.target.value})}
-                />  
+                />
+                <div className={classes.fileInput}>
+                    <FileBase type="file" multiple={false} onDone={(base64) => setPostData({...postData, selectedFile: base64})} />
+                </div>
+                <Button classname={classes.buttonSubmit} type="submit" variant="container" color="primary" size="large" fullWidth  />
             </form>
         </Paper>
     )
