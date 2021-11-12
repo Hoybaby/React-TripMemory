@@ -10,6 +10,7 @@ import Form from './components/Form/Form'
 
 import memories from './images/memories.png'
 import useStyles from './styles';
+import './index.css'
 
 
 

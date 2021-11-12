@@ -1,8 +1,9 @@
 import React from 'react';
-import { Card, CardActionArea, CardContent, CardMedia, Typography, Button } from '@material-ui/core';
+import { Card, CardActions, CardContent, CardMedia, Typography, Button } from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import moment from 'moment';
 
 
 import useStyles from './styles';
@@ -24,9 +25,9 @@ const Post =({post}) => {
                 </Button>
             </div>
             <div classname={classes.details}>
-                <Typography variant="body2" color="textSecondary">{post.tags.map((tag => {
+                <Typography variant="body2" color="textSecondary">{post.tags.map((tag) => 
                     `#${tag}`
-                }))}
+                )}
                 </Typography>
                 
             </div>
