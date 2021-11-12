@@ -1,4 +1,4 @@
-import * as api from '../api/index.js';
+import * as api from '../api';
 // we import everything as api
 
 // do it this way because we going to use alot of calls
@@ -25,7 +25,7 @@ export const createPost =(post) => async(dispatch) => {
         const {data} = await api.createPost(post);
 
         // this action will create a new post and we are going to dispatch it to the reducer.
-        dispatch({type: 'CREATE_POST', payload: data})
+        dispatch({type: 'CREATE', payload: data})
     } catch(error) {
         console.log(error.message);
     }

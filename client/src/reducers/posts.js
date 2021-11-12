@@ -8,11 +8,11 @@ export default (posts = [], action) => {
             // this is the actual posts
 
         case 'CREATE' :
-            return posts;
-            break;
+            return [...posts, action.payload];
+            
     
         default:
             return posts;
-            break;
+            
     }
 }
