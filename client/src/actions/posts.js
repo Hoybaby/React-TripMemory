@@ -18,3 +18,15 @@ export const getPosts =() => async(dispatch) => {
     // payload is the data which where we are storing all the posts
     
 }
+
+export const createPost =(post) => async(dispatch) => {
+    try {
+        // we are going to send the post to the server;
+        const {data} = await api.createPost(post);
+
+        // this action will create a new post and we are going to dispatch it to the reducer.
+        dispatch({type: 'CREATE_POST', payload: data})
+    } catch(error) {
+        console.log(error.message);
+    }
+}
