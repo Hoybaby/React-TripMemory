@@ -9,6 +9,7 @@ import moment from 'moment';
 import useStyles from './styles';
 
 const Post =({post}) => {
+    
     const classes= useStyles();
 
 
@@ -20,6 +21,7 @@ const Post =({post}) => {
                 <Typography variant ="body2">{moment(post.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
+                {/* this is the ... button menu on the card */}
                 <Button style={{color: 'white'}} size ="small" onClick={() => {}}>
                     <MoreHorizIcon fontSize="default" />
                 </Button>
