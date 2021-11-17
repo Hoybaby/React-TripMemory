@@ -9,6 +9,12 @@ export default (posts = [], action) => {
 
         case 'CREATE' :
             return [...posts, action.payload];
+
+        case 'UPDATE':
+            // if posts.ID === action.payload.ID then we want to return the action.payload because the action.payload is the newly updated post/memory
+            return posts.map(post => post,_id === action.payload._id ? action.payload : post);
+
+        case 'DELETE' :
             
     
         default:

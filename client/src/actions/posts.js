@@ -30,3 +30,14 @@ export const createPost =(post) => async(dispatch) => {
         console.log(error.message);
     }
 }
+
+export const updatePost =(post) => async(dispatch) => {
+    try {
+        // first need to create the request. important to pass in the id so it knows which one to grab
+        const {data} = await api.updatePost(id, post);
+
+        dispatch({type: 'UPDATE', payload: data})
+    } catch(error) {
+        console.log(error.message);
+    }
+}
