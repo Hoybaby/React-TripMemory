@@ -12,7 +12,7 @@ export default (posts = [], action) => {
 
         case 'UPDATE':
             // if posts.ID === action.payload.ID then we want to return the action.payload because the action.payload is the newly updated post/memory
-            return posts.map(post => post,_id === action.payload._id ? action.payload : post);
+            return posts.map(post => post._id === action.payload._id ? action.payload : post);
 
         case 'DELETE' :
             

@@ -31,7 +31,7 @@ export const createPost =(post) => async(dispatch) => {
     }
 }
 
-export const updatePost =(post) => async(dispatch) => {
+export const updatePost =(id, post) => async(dispatch) => {
     try {
         // first need to create the request. important to pass in the id so it knows which one to grab
         const {data} = await api.updatePost(id, post);

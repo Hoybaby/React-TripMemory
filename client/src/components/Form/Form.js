@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
 import {useDispatch } from 'react-redux';
@@ -21,7 +21,13 @@ const Form =({currentId, setCurrentId}) => {
 
     const dispatch = useDispatch();
 
-    const posts = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
+    const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
+
+    useEffect(() => {
+        if(post) setPostData(post);
+
+        // when post changes, then we will run this
+    }, [post])
 
     
 
