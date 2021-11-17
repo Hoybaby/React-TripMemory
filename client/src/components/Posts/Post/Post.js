@@ -23,10 +23,10 @@ const Post =({post, setCurrentId}) => {
             <div className={classes.overlay2}>
                 {/* this is the ... button menu on the card */}
                 <Button style={{color: 'white'}} size ="small" onClick={() => setCurrentId(post._id)}>
-                    <MoreHorizIcon fontSize="default" />
+                    <MoreHorizIcon fontSize="medium" />
                 </Button>
             </div>
-            <div classname={classes.details}>
+            <div className={classes.details}>
                 <Typography variant="body2" color="textSecondary">{post.tags.map((tag) => 
                     `#${tag}`
                 )}
