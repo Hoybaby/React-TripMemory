@@ -31,9 +31,7 @@ const Form =({currentId, setCurrentId}) => {
 
     
 
-    const clear = () => {
-        
-    }
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -41,18 +39,32 @@ const Form =({currentId, setCurrentId}) => {
         // 
         if(currentId) {
             dispatch(updatePost(currentId, postData));
+            // also want to clear the form when post is done or updated
+            clear();
         } else {
             // if we dont have a currently selected Id, we are creating a post and not updating
             dispatch(createPost(postData));
+            clear();
         }
+    }
 
-        
+    const clear = () => {
+        // first want to set the id to null then take default values and state and update the state
+        setCurrentId(null);
+        setPostData({
+            creator: '',
+            title:'',
+            message: '',
+            tags: '',
+            selectedFile: ''
+        })
+
     }
     return (
         <Paper className={classes.paper}>
             {/* need to have mutiple classes so template string is used */}
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}> 
-                <Typography variant="h6" >Creating a Memory</Typography> 
+                <Typography variant="h6" >{currentId? 'Editing' : 'Creating'} a Memory</Typography> 
                 <TextField 
                     name="creator"
                     variant="outlined" 
