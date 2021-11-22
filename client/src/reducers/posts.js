@@ -15,7 +15,9 @@ export default (posts = [], action) => {
             return posts.map(post => post._id === action.payload._id ? action.payload : post);
 
         case 'DELETE' :
-            
+            // we are going to keep all the psots wwhere the id is not equal to the id we are deleting
+            return posts.filter(post => post._id !== action.payload);
+            break;
     
         default:
             return posts;

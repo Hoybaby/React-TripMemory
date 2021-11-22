@@ -41,3 +41,13 @@ export const updatePost =(id, post) => async(dispatch) => {
         console.log(error);
     }
 }
+
+export const deletePost =(id) => async(dispatch) => {
+    try {
+        await api.deletePost(id);
+        // this is the action that will be dispatched to the reducer
+        dispatch({type: 'DELETE', payload: id})
+    } catch(error) {
+        console.log(error);
+    }
+}
