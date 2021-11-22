@@ -23,7 +23,9 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch])
+
+    // the reason i am adding currentId is because since now we are clearing the input, we are changing the currentId which then will change the backend post.
+  }, [currentId, dispatch])
 
   return (
     <Container maxWidth="lg">
