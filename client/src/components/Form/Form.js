@@ -99,7 +99,7 @@ const Form =({currentId, setCurrentId}) => {
                     fullWidth
                     value={postData.tags}
                     // the whole data will be stored in the state and each object key will be a different text field
-                    onChange={(e) => setPostData({...postData, tags: e.target.value})}
+                    onChange={(e) => setPostData({...postData, tags: e.target.value.split(',')})}
                 />
                 <div className={classes.fileInput}>
                 <FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} />

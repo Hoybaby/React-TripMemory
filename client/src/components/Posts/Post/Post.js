@@ -39,7 +39,7 @@ const Post =({post, setCurrentId}) => {
             </div>
             <Typography className={classes.title} gutterBottom variant="h5"> {post.title}</Typography>
             <CardContent>
-                <Typography gutterBottom variant="h5"> {post.message}</Typography>
+                <Typography gutterBottom variant="body2" color="textSecondary" component="p" > {post.message}</Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
                 <Button size="small" color="primary" onClick={() => dispatch(likePost(post._id))}> 
