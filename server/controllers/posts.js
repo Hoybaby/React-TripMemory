@@ -55,3 +55,17 @@ export const deletePost = async (req, res) => {
 
     res.status(200).send("Post deleted");
 }
+
+export const likePost = async (req, res) => {
+    const {id: _id} = req.params;
+    
+
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("No post with that id");
+    
+    // have to look for the post we are looking for which is handled below.
+    const post = await PostMessage.findById(_id);
+
+    // we want to pass the update and have access to the updated post
+    const updatedPost = await PostMessage.findByIdAndUpdate(_id, {likeCount: post.likeCount + 1}, {new: true});
+    res.json(updatedPost);
+}

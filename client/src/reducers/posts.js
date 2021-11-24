@@ -14,6 +14,9 @@ export default (posts = [], action) => {
             // if posts.ID === action.payload.ID then we want to return the action.payload because the action.payload is the newly updated post/memory
             return posts.map(post => post._id === action.payload._id ? action.payload : post);
 
+        case 'LIKE':
+            return posts.map(post => post._id === action.payload._id ? action.payload : post);
+
         case 'DELETE' :
             // we are going to keep all the psots wwhere the id is not equal to the id we are deleting
             return posts.filter(post => post._id !== action.payload);
