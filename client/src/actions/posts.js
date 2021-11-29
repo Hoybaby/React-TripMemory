@@ -1,3 +1,4 @@
+import { FETCH_ALL, CREATE, DELETE,  UPDATE  } from '../constants/actionTypes';
 import * as api from '../api';
 // we import everything as api
 
@@ -8,7 +9,7 @@ export const getPosts =() => async(dispatch) => {
     try {
         const {data} = await api.fetchPosts();
 
-        dispatch({type: 'FETCH_ALL' , payload: data})
+        dispatch({type: FETCH_ALL , payload: data})
         // now we are succfesul using redux to dispatch action
     } catch(error) {
         console.log(error.message);
@@ -25,7 +26,7 @@ export const createPost =(post) => async(dispatch) => {
         const {data} = await api.createPost(post);
 
         // this action will create a new post and we are going to dispatch it to the reducer.
-        dispatch({type: 'CREATE', payload: data})
+        dispatch({type: CREATE, payload: data})
     } catch(error) {
         console.log(error.message);
     }
@@ -36,7 +37,7 @@ export const updatePost =(id, post) => async(dispatch) => {
         // first need to create the request. important to pass in the id so it knows which one to grab
         const {data} = await api.updatePost(id, post);
 
-        dispatch({type: 'UPDATE', payload: data})
+        dispatch({type: UPDATE, payload: data})
     } catch(error) {
         console.log(error);
     }
@@ -46,7 +47,7 @@ export const deletePost =(id) => async(dispatch) => {
     try {
         await api.deletePost(id);
         // this is the action that will be dispatched to the reducer
-        dispatch({type: 'DELETE', payload: id})
+        dispatch({type: DELETE, payload: id})
     } catch(error) {
         console.log(error);
     }
