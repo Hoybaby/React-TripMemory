@@ -1,9 +1,12 @@
 import React from 'react'
-import { AppBar, Typography } from '@material-ui/core'
+import { AppBar, Typography } from '@material-ui/core';
+
+import useStyles from './styles';
+import memories from '../../images/memories.png';
 
 const Navbar = () => {
 
-    const classes = useStlyes();
+    const classes = useStyles();
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
@@ -15,4 +18,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Navbar;
