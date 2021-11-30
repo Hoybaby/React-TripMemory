@@ -16,3 +16,10 @@ summary of work
 <h3>Liking Functionality</h3>
 
 <p>Once the proper structure is already set up, it is easier to scale. In order to start with the like function, I went into routes to add a new router path which then needs a corresponding function in the controllers folder. The likePost function will be very similar to the updatePost where it will see if the type is valid then then add a post like up 1. Once again after work is done in the controllers section on the server side, it has to be incoporated into the api folder on the front-end. Then the same process occus with the delete functionality. </p>
+
+<h3>JWT/Login </h3>
+
+<p>First we need to install some packages on the client folder. These packages will help me with the user log in and they are jwt-decode and react-google-login. For the backend, you need to install bcryptjs
+and jsonwebtoken in the server folder. I need to add a proper NavBar in order to incoprate the log in function so I can apply a button that will redirect the user to a login form. First I need to remove some of the code I have in the app.js and place it into a designated App bar function.
+ 
+ </p>
