@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     res.send('Hello to Memories API')
     });
 
-// const CONNECTION_URL = 'mongodb+srv://hoybaby:Welcome0@firstcluster.b4kva.mongodb.net/MemoryDB?retryWrites=true&w=majority'
+
 
 const PORT = process.env.PORT || 5000;
 
