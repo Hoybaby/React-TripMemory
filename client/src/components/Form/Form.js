@@ -29,10 +29,6 @@ const Form =({currentId, setCurrentId}) => {
         // when post changes, then we will run this
     }, [post])
 
-    
-
-    
-
     const handleSubmit = (e) => {
         e.preventDefault();
 

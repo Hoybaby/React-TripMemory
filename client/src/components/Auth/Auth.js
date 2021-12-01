@@ -6,7 +6,7 @@ const Auth = () => {
 
     return (
         <div>
-            AUTH
+            Testing
         </div>
     )
 }
