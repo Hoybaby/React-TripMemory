@@ -2,22 +2,25 @@ import React, {useState} from 'react';
 import { Avatar, Button, Paper, Grid, Typography, Container, Icon} from '@material-ui/core';
 import {GoogleLogin} from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { useDispatch } from 'react-redux';
+
+
 import Input from './Input';
 import icon from './icon';
+
 
 import useStyles from './styles'
 
 const Auth = () => {
 
     const classes = useStyles();
+
     // this is going to handle if we are going to show our password later
     const [ showPassword, setShowPassword ] = useState(false);
-
     const[isSignup, setIsSignup] = useState(false);
-
     const state = null;
 
-    // const isSignup = true;
+    const dispatch = useDispatch();
 
     const handleSubmit = () => {
         console.log('submit');
@@ -38,7 +41,16 @@ const Auth = () => {
     }
 
     const googleSuccess = async (res) => {
-        console.log(res);
+        // ?. special operator that not going to throw an erro if we dont have acces to the rest object
+        const result = res?.profileObj; 
+        const token = res?.tokenId;
+
+        try {
+            dispatch({type: 'AUTH', data: {result, token}})
+        } catch {
+
+        }
+
     }
 
     const googleFailure = (error) => {
@@ -98,7 +110,7 @@ const Auth = () => {
                         onFailure={googleFailure}
                         cookiePolicy="single_host_origin"
                     /> 
-                    <Grid container justify="flex-end">
+                    <Grid container justifyContent="flex-end">
                         <Grid item>
                             <Button onClick={switchMode}> 
                                 {isSignup? 'Already have an account? Sign in' : 'Don\'t have an account? Sign up'}
