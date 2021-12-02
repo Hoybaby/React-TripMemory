@@ -1,16 +1,26 @@
 import React from 'react';
-import { Avatar, Button, Paper, Grid, Typogrpahy, Container } from '@material-ui/core';
+import { Avatar, Button, Paper, Grid, Typography, Container, Typography } from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 import useStyles from './styles'
 
 const Auth = () => {
 
+    const classes = useStyles();
+
     const state = null;
 
+    const isSignup = false;
+
     return (
-        <div>
-            Testing
-        </div>
+        <Container compononent="main" maxWidth="sm">
+            <Paper className={classes.paper} elevation={3}>
+                <Avatar className={classes.avatar}>
+                    <LockOutlinedIcon />
+                </Avatar>
+                <Typography variant="h5"> Sign In </Typography>
+            </Paper>
+        </Container>
     )
 }
 
