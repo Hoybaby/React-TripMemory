@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Avatar, Button, Paper, Grid, Typography, Container, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Input from './Input';
 
 import useStyles from './styles'
 
 const Auth = () => {
 
     const classes = useStyles();
+    // this is going to handle if we are going to show our password later
+    const [ showPassword, setShowPassword ] = useState(false);
 
     const state = null;
 
@@ -34,16 +37,15 @@ const Auth = () => {
                             // if is SIgnup is true then it will show the following, which be two different inputs
                             isSignup && (
                                 <>
-                                    <Grid xs={6} md={12}>
-                                        <TextField name="firstName" label="First Name" handleChange={handleChange} autoFocus xs={6}/>
-                                    </Grid>
-                                    <Grid xs={6} md={12}>
-                                        <TextField name="firstName" label="First Name" handleChange={handleChange} autoFocus xs={6}/>
-                                    </Grid>
+                                    <Input name="firstName" label="First Name" type="text" handleChange={handleChange} autoFocus half />
+                                    <Input name="firstName" label="First Name" type="text" handleChange={handleChange} half />
                                     
                                 </>
                             )
-                        }
+                        } 
+                        <Input name="email" label="Email address" type="email" handleChange={handleChange} autoFocus />
+                        {/* so the input below will check the state before deciding what kind of type it should be */}
+                        <Input name="password" label="Password" type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
                     </Grid>
                 </form>
             </Paper>
