@@ -34,8 +34,13 @@ const Auth = () => {
                             // if is SIgnup is true then it will show the following, which be two different inputs
                             isSignup && (
                                 <>
-                                    <TextField name="firstName" label="First Name" handleChange={handleChange} autoFocus xs={6}/>
-                                    <TextField name="lastName" label="Last Name" handleChange={handleChange} autoFocus xs={6}/>
+                                    <Grid xs={6} md={12}>
+                                        <TextField name="firstName" label="First Name" handleChange={handleChange} autoFocus xs={6}/>
+                                    </Grid>
+                                    <Grid xs={6} md={12}>
+                                        <TextField name="firstName" label="First Name" handleChange={handleChange} autoFocus xs={6}/>
+                                    </Grid>
+                                    
                                 </>
                             )
                         }
