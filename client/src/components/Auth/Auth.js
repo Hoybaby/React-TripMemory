@@ -37,12 +37,14 @@ const Auth = () => {
 
     }
 
-    const googleSuccess = (res) => {
+    const googleSuccess = async (res) => {
         console.log(res);
     }
 
-    const googleFailure = () => {
+    const googleFailure = (error) => {
+        console.log(error);
         console.log("Google sign in unsuccessful");
+
     }
 
 
@@ -72,17 +74,22 @@ const Auth = () => {
                         <Input name="password" label="Password" type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
                         { isSignup && <Input name="confirmPassword" label="Repeat Password" type="password" handleChange={handleChange} />}
                     </Grid>
+                    
+                    {/* button will display two kind of texts */}
+                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+                        {isSignup ? 'Sign Up' : 'Sign In'}
+                    </Button>
                     <GoogleLogin 
-                        clientId="Google id"
+                        clientId="1022610916196-vu8vvlme2p3o7evlqfj30att2ho4c076.apps.googleusercontent.com"
                         render={(renderProps) => (
                             <Button 
-                                className={classes,googleButton} 
+                                className={classes.googleButton} 
                                 color="primary" 
                                 fullWidth 
                                 onClick={renderProps.onClick} 
-                                disabled={renderProps.disbabled} 
+                                disabled={renderProps.disabled} 
                                 startIcon={<Icon/>} 
-                                varient='contained'
+                                variant='contained'
                             > 
                             Google Sign in
                             </Button>
@@ -91,10 +98,6 @@ const Auth = () => {
                         onFailure={googleFailure}
                         cookiePolicy="single_host_origin"
                     /> 
-                    {/* button will display two kind of texts */}
-                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
-                        {isSignup ? 'Sign Up' : 'Sign In'}
-                    </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
                             <Button onClick={switchMode}> 
