@@ -8,13 +8,22 @@ import {useNavigate} from 'react-router-dom';
 
 import Input from './Input';
 import icon from './icon';
-
-
 import useStyles from './styles'
+
+
+const initialState = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+}
 
 const Auth = () => {
 
     const classes = useStyles();
+
+    const [formData, setFormData] = useState(initialState);
 
     // this is going to handle if we are going to show our password later
     const [ showPassword, setShowPassword ] = useState(false);
@@ -24,22 +33,24 @@ const Auth = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const handleSubmit = () => {
-        console.log('submit');
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        console.log(formData);
     }
 
     // we need a prev state. when we are changing the state of the old state, we need to call the prev
     // so this will be able to toggle the password
     const handleShowPassword = () => setShowPassword(( prevShowPassword => !prevShowPassword));
 
-    const handleChange = () => {
-        console.log('change');
+    const handleChange = (e) => {
+        // we spread the form and then we update the only specific field that we want to change
+        setFormData({...formData, [e.target.name]: e.target.value}); //this will make to spread the propertries
     }
 
     const switchMode = () => {
         setIsSignup(prevIsSignup => !prevIsSignup);
         handleShowPassword(false);
-
     }
 
     const googleSuccess = async (res) => {
@@ -52,9 +63,8 @@ const Auth = () => {
             dispatch({type: 'AUTH', data: {result, token}})
             navigate('/');
         } catch {
-
+            console.log('error');
         }
-
     }
 
     const googleFailure = (error) => {
@@ -62,8 +72,6 @@ const Auth = () => {
         console.log("Google sign in unsuccessful");
 
     }
-
-
 
     return (
         <Container compononent="main" maxWidth="sm">
@@ -80,14 +88,14 @@ const Auth = () => {
                             isSignup && (
                                 <>
                                     <Input name="firstName" label="First Name" type="text" handleChange={handleChange} autoFocus half />
-                                    <Input name="firstName" label="First Name" type="text" handleChange={handleChange} half />
+                                    <Input name="lastName" label="Last Name" type="text" handleChange={handleChange} half />
                                     
                                 </>
                             )
                         } 
-                        <Input name="email" label="Email address" type="email" handleChange={handleChange} autoFocus />
+                        <Input name="email" label="Email address" type="email" handleChange={handleChange} />
                         {/* so the input below will check the state before deciding what kind of type it should be */}
-                        <Input name="password" label="Password" type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
+                        <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
                         { isSignup && <Input name="confirmPassword" label="Repeat Password" type="password" handleChange={handleChange} />}
                     </Grid>
                     
