@@ -20,6 +20,8 @@ summary of work
 <h3>JWT/Login </h3>
 
 <p>First we need to install some packages on the client folder. These packages will help me with the user log in and they are jwt-decode and react-google-login. For the backend, you need to install bcryptjs
-and jsonwebtoken in the server folder. I need to add a proper NavBar in order to incoprate the log in function so I can apply a button that will redirect the user to a login form. First I need to remove some of the code I have in the app.js and place it into a designated App bar function.
+and jsonwebtoken in the server folder. I need to add a proper NavBar in order to incoprate the log in function so I can apply a button that will redirect the user to a login form. First I need to remove some of the code I have in the app.js and place it into a designated App bar function. After this and place the proper function, I think will start with the Google Oauth log in which is imported with a package. After the package, I created the component in the sign in form. After setting up everything with the developer google site, then we can try to log in and see if there is a response in the console. Since the procress is using an async funtion, we can use the try and catch method. When it is succeful we will use dispatch(redux) to perform an action and in this case, set the id into localstorage so users dont have always relog. After setting it to local storage, for a good user experience I redirected the user to the page. I tried this at first with useHistory but found that it was outdated. Instead, using navigate from react-router-dom to do the same action.  
+
+<p></p>
  
  </p>

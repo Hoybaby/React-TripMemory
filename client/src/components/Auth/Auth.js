@@ -4,6 +4,7 @@ import {GoogleLogin} from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useDispatch } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
+import { signin, signup } from '../../actions/auth';
 
 
 import Input from './Input';
@@ -35,6 +36,12 @@ const Auth = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if(isSignup){
+            dispatch(signup(formData, navigate));
+        } else {
+            dispatch(signin(formData, navigate));
+        }
 
         console.log(formData);
     }
