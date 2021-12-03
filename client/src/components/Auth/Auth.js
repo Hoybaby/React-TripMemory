@@ -48,10 +48,9 @@ const Auth = () => {
         const token = res?.tokenId;
 
         try {
-
             // history belongs to react router dom. this will redirect us to homepage when logged in
-            navigate('/');
             dispatch({type: 'AUTH', data: {result, token}})
+            navigate('/');
         } catch {
 
         }
