@@ -5,12 +5,12 @@ const authReducer = (state = {authData: null}, action) => {
     switch (action.type) {
         // if auth, we want to
         case AUTH:
+            // we are setting the data to the local storage.
+            localStorage.setItem('profile', JSON.stringify({...action?.data}));
+
+            // we
+            return {...state, authData: action?.data};
             
-                console.log(action?.data)
-                return state;
-                // ...state,
-                // isAuthenticated: true,
-                // user: action.user
         default:
             return state;
     }
