@@ -3,6 +3,7 @@ import { Avatar, Button, Paper, Grid, Typography, Container, Icon} from '@materi
 import {GoogleLogin} from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useDispatch } from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 
 
 import Input from './Input';
@@ -20,6 +21,7 @@ const Auth = () => {
     const[isSignup, setIsSignup] = useState(false);
     const state = null;
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleSubmit = () => {
@@ -46,6 +48,9 @@ const Auth = () => {
         const token = res?.tokenId;
 
         try {
+
+            // history belongs to react router dom. this will redirect us to homepage when logged in
+            navigate('/');
             dispatch({type: 'AUTH', data: {result, token}})
         } catch {
 
