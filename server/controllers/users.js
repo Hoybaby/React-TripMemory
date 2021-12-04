@@ -13,7 +13,7 @@ export const signin = async( req, res) => {
         // this will be searching for the exisiting user in the database
         const existingUser = await User.findOne({email});
 
-        if (!existingUser) return res.status(404).send('User not found');
+        if (!existingUser) return res.status(404).json({message: 'User not found'});
 
         // we cant do a normal string check because of the bcrypptsjs
         const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
@@ -30,4 +30,26 @@ export const signin = async( req, res) => {
 
 export const signup = async( req, res) => {
     
+    const { firstName, lastName, email, password, confirmPassword } = req.body;
+
+    try {
+        
+        const existingUser = await User.findOne({email});
+        // first we need to check if the user already exists
+        if (existingUser) return res.status(404).json({message: 'User already exists'});
+
+        if(password !== confirmPassword) return res.status(404).json({message: 'Passowrds do not match'});
+
+        const hashedPassword = await bcrypt.hash(password, 12);
+
+        const result = await User.create({email, password: hashedPassword, name: `${firstName} ${lastName}`});
+
+        const token = jwt.sign({email: result.email, id: result._id}, 'secret', { expiresIn: '1h'});
+
+        res.state(200).json({ result: existingUser, token });
+
+    } catch {
+
+    }
+
 }
