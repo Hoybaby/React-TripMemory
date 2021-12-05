@@ -1,16 +1,22 @@
 import axios from 'axios';
 
-const url = 'https://memory-react-card.herokuapp.com/posts';
+const API = axios.create({baseURL: 'http://localhost:3000/'})
 
-export const fetchPosts = () => axios.get(url);
+// later change this back to https://memory-react-card.herokuapp.com/posts
+// const url = 'http://localhost:3000/posts';
+
+export const fetchPosts = () => API.get('/posts');
 
 // take in one parameter which will be the entire post and then the axios.post will be called and send.
-export const createPost = (newPost) => axios.post(url, newPost);
+export const createPost = (newPost) => API.post('/posts', newPost);
+
+export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
 
 // we have the url and the id for the post we want to update. then we are going to send the updated post.
-export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
+export const updatePost = (id, updatedPost) => API.patch(`'/posts}/${id}`, updatedPost);
 
-export const deletePost = (id) => axios.delete(`${url}/${id}`);
+export const deletePost = (id) => API.delete(`/posts/${id}`);
 
-// 
-export const likePost = (id) => axios.patch(`${url}/${id}/likePost`);
+export const signin =(formData) => API.post('/users/signin', formData);
+
+export const signup =(formData) => API.post('/users/signup', formData);
