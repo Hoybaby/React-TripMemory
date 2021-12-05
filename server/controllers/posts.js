@@ -57,15 +57,29 @@ export const deletePost = async (req, res) => {
 }
 
 export const likePost = async (req, res) => {
-    const {id: _id} = req.params;
-    
 
+    const {id: _id} = req.params;
+
+    if(!req.userId) return res.json({message: "You must be logged in to like a post"});
+    
     if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("No post with that id");
     
     // have to look for the post we are looking for which is handled below.
     const post = await PostMessage.findById(_id);
 
+    // if that is the case , that means his id is already in there and cant like the post more than once
+    const index = post.likes.findIndex((id) => id=== String(req.userId));
+
+    if(index === -1) {
+        // like the post
+        post.likes.push(req.userId);
+    }else {
+        // dislike the post
+        post.likes = post.likes.filter((id) => id !== String(req.userId));
+    }    
+
     // we want to pass the update and have access to the updated post
-    const updatedPost = await PostMessage.findByIdAndUpdate(_id, {likeCount: post.likeCount + 1}, {new: true});
+    // removing the likes because the new post will contain the like itself
+    const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, {new: true});
     res.json(updatedPost);
 }

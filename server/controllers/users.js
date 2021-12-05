@@ -49,7 +49,7 @@ export const signup = async( req, res) => {
         res.state(200).json({ result: existingUser, token });
 
     } catch {
-
+        res.status(500).json({ message: 'something went wrong' });
     }
 
 }
