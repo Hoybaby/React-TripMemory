@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-const test = 'test';
+// const test = 'test';
 
 // in order to set up envitormental variables, need to make a .env file in the root directory of the project then assign it to a variable. also a package needs to be installed which is dotenv. 
 // after installing the package, the server file needs to import a dotenv from  dotenv. then needs to be called in the server file. with dotenv.config();

@@ -60,6 +60,7 @@ export const likePost = async (req, res) => {
 
     const {id: _id} = req.params;
 
+    // user is not authenticated.
     if(!req.userId) return res.json({message: "You must be logged in to like a post"});
     
     if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("No post with that id");
@@ -68,7 +69,7 @@ export const likePost = async (req, res) => {
     const post = await PostMessage.findById(_id);
 
     // if that is the case , that means his id is already in there and cant like the post more than once
-    const index = post.likes.findIndex((id) => id=== String(req.userId));
+    const index = post.likes.findIndex((id) => id === String(req.userId));
 
     if(index === -1) {
         // like the post
