@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({baseURL: 'http://localhost:3000/'})
+const API = axios.create({baseURL: 'http://localhost:5000/'})
 
 // later change this back to https://memory-react-card.herokuapp.com/posts
 // const url = 'http://localhost:3000/posts';
@@ -17,6 +17,7 @@ export const updatePost = (id, updatedPost) => API.patch(`'/posts}/${id}`, updat
 
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 
-export const signin =(formData) => API.post('/users/signin', formData);
+// was /users before but i forgot in my routes in my index.js where the server is, i have it as just user. singular which throwing everything off.
+export const signIn =(formData) => API.post('/user/signin', formData);
 
-export const signup =(formData) => API.post('/users/signup', formData);
+export const signUp =(formData) => API.post('/user/signup', formData);

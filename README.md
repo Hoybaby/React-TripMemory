@@ -25,6 +25,9 @@ and jsonwebtoken in the server folder. I need to add a proper NavBar in order to
 
 <p>With the JWT, I need to first be able to record all the data with the forms. I tested this with several functions and at first I wasn't getting it to work with the password in the sign in because I forgot the handleChange function on the input field. After I made sure I can change the initialState I created with the form, I started to create the back-end portion for the JWT to be used. First, the routes have to be made and then brought in with the server file. After the routes are set up, for the signin and signup, need to make a users file in the controllers to handle the requests to the backend. To send the requests, I need to make sure I am retrieveing them fron the front end and since it is an async block, I can use a try/catch to hold most of the logic. I need to first find if a user exists with 'await User.findOne({email});' and then if does not exist, should return a message. This kind of process will be done for the rest of the signin and will be very similar to the signup.
 
-
 </p>
+
+
+<h3>Redux Workflow</h3>
+<p>First, everything happens with the form which is in the Auth component. Once all the inputs are typed, we want to dispatch a certain action which has something to do with redux. An example is the process of Sign-In as a new user. In the Sign-In, we are dispatching two things, the formData which is being send with a handleChange function and then sending the user to the homepage. Once we dispatch, we are going to the actions which will make another action in our actions folder. However, it goes to another step to our API so it makes a post request that gets some data. After getting some data, we will dispatch a type of Auth for both signIn and signUp.</p>
   

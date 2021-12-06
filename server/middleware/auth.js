@@ -11,7 +11,7 @@ const auth = async (req, res, next) => {
         // if our token is less then that means it is our own token
         const isCustomAuth = token.length < 500;
 
-        const decodedData;
+        let decodedData;
 
         if(token && isCustomAuth) {
             decodedData = jwt.verify(token, 'secret');
