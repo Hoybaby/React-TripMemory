@@ -18,6 +18,6 @@ export const updatePost = (id, updatedPost) => API.patch(`'/posts/${id}`, update
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 
 // was /users before but i forgot in my routes in my index.js where the server is, i have it as just user. singular which throwing everything off.
-export const signIn =(formData) => API.post('/user/signin', formData);
+export const signIn = (formData) => API.post('/user/signin', formData);
 
-export const signUp =(formData) => API.post('/user/signup', formData);
+export const signUp = (formData) => API.post('/user/signup', formData);
