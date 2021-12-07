@@ -6,7 +6,8 @@ import jwt from 'jsonwebtoken';
 // next means do something then do something else
 const auth = async (req, res, next) => {
     try {
-        const token = req.headers.Authorization.split(' ')[1];
+        console.log(req.headers)
+        const token = req.headers.authorization.split(' ')[1];
 
         // if our token is less then that means it is our own token
         const isCustomAuth = token.length < 500;

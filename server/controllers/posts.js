@@ -25,9 +25,9 @@ export const createPost = async (req, res) => {
 
     try {
         // this is an asynchrnous action
-        await newPost.save()
+        await newPostMessage.save()
 
-        res.status(201).json(newPost)
+        res.status(201).json(newPostMessage)
     } catch(error) {
         res.status(409).json({message: error.message});
 
