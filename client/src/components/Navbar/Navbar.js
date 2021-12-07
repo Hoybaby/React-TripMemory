@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Link, useNavigate, useLocation} from 'react-router-dom';
 import { AppBar, Avatar, Toolbar, Typography, Button } from '@material-ui/core';
+import * as actionType from '../../constants/actionTypes';
 
 import { useDispatch } from 'react-redux';
 
@@ -22,7 +23,7 @@ const Navbar = () => {
 
     const logout =() => {
         dispatch({
-            type: 'LOGOUT'
+            type: actionType.LOGOUT
         });
 
         navigate('/');
