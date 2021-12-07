@@ -9,7 +9,7 @@ export default makeStyles((theme) => ({
         justifyContent: 'center',
         alignItems: 'center',
         },
-        heading: {
+    heading: {
             color: 'rgba(0,183,255, 1)',
         },
         image: {
@@ -17,9 +17,9 @@ export default makeStyles((theme) => ({
         },
         [theme.breakpoints.down('sm')]: {
             mainContainer: {
-                flexDirection:'column-reverse',
-            }
-        }
+                flexDirection: 'column-reverse',
+            },
+        },
         
 
 }));
