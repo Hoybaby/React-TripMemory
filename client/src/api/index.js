@@ -1,6 +1,18 @@
 import axios from 'axios';
 
-const API = axios.create({baseURL: 'http://localhost:5000'})
+const API = axios.create({baseURL: 'http://localhost:5000'});
+
+// this is going to be a function on each of our requests.
+// the callback function gets a request, we have to send our token to our backend so our middleware can validate it.
+API.interceptors.request.use((req) => {
+    if(localStorage.getItem('profile')) {
+        // bearer token
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+    }
+
+    return req;
+    // after the return, this will allow the reuqest to continue, like decode the data and it will be sent to the backend so it knows
+})
 
 // later change this back to https://memory-react-card.herokuapp.com/posts
 // const url = 'http://localhost:3000/posts';

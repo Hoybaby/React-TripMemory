@@ -20,7 +20,8 @@ export const createPost = async (req, res) => {
     const post = req.body;
 
     // this PostMessage is the schema that is in the models which will get formatted from a simple form down the road
-    const newPost = new PostMessage(post)
+    // changed the name of the schema to postMessage so have to go to models
+    const newPostMessage = new PostMessage({...post, creator: req.userId, createdAt: new Date().toISOString()});
 
     try {
         // this is an asynchrnous action
