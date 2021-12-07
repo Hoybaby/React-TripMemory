@@ -13,7 +13,7 @@ export const createPost = (newPost) => API.post('/posts', newPost);
 export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
 
 // we have the url and the id for the post we want to update. then we are going to send the updated post.
-export const updatePost = (id, updatedPost) => API.patch(`'/posts}/${id}`, updatedPost);
+export const updatePost = (id, updatedPost) => API.patch(`'/posts/${id}`, updatedPost);
 
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 
