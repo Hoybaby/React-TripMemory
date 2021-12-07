@@ -21,9 +21,10 @@ export const signin = async( req, res) => {
         if (!isPasswordCorrect) return res.status(400).json({ message: 'Invalid Credentials'});
         // wil change the secret key in the future
         const token = jwt.sign({email: existingUser.email, id: existingUser._id}, 'secret', { expiresIn: '1h'}); 
-        res.state(200).json({ result: existingUser, token });
+
+        res.status(200).json({ result: existingUser, token });
     } catch (error) {
-        res.stateus(500).json({ message: 'something went wrong' });
+        res.status(500).json({ message: 'something went wrong' });
     }
 
 }
@@ -46,7 +47,7 @@ export const signup = async( req, res) => {
 
         const token = jwt.sign({email: result.email, id: result._id}, 'secret', { expiresIn: '1h'});
 
-        res.state(200).json({ result, token });
+        res.status(200).json({ result, token });
 
     } catch {
         res.status(500).json({ message: 'something went wrong' });
