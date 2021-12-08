@@ -16,21 +16,16 @@ export const getPosts = async (req,res) => {
 }
 
 export const createPost = async (req, res) => {
-
     const post = req.body;
 
-    // this PostMessage is the schema that is in the models which will get formatted from a simple form down the road
-    // changed the name of the schema to postMessage so have to go to models
-    const newPostMessage = new PostMessage({...post, creator: req.userId, createdAt: new Date().toISOString()});
+    const newPostMessage = new PostMessage({ ...post, creator: req.userId, createdAt: new Date().toISOString() })
 
     try {
-        // this is an asynchrnous action
-        await newPostMessage.save()
+        await newPostMessage.save();
 
-        res.status(201).json(newPostMessage)
-    } catch(error) {
-        res.status(409).json({message: error.message});
-
+        res.status(201).json(newPostMessage );
+    } catch (error) {
+        res.status(409).json({ message: error.message });
     }
 }
 
