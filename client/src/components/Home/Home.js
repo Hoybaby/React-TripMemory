@@ -9,7 +9,8 @@ import './Home.css';
 
 const Home = () => {
 
-    const [currentId, setCurrentId] = useState(null)
+    // this was creating an error later. was null before
+    const [currentId, setCurrentId] = useState(0)
 
     const dispatch = useDispatch();
 
