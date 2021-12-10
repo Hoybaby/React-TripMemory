@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, DELETE,  UPDATE  } from '../constants/actionTypes';
+import { FETCH_ALL, CREATE, DELETE,  UPDATE, } from '../constants/actionTypes';
 import * as api from '../api';
 // we import everything as api
 

@@ -16,3 +16,18 @@ summary of work
 <h3>Liking Functionality</h3>
 
 <p>Once the proper structure is already set up, it is easier to scale. In order to start with the like function, I went into routes to add a new router path which then needs a corresponding function in the controllers folder. The likePost function will be very similar to the updatePost where it will see if the type is valid then then add a post like up 1. Once again after work is done in the controllers section on the server side, it has to be incoporated into the api folder on the front-end. Then the same process occus with the delete functionality. </p>
+
+<h3>JWT/Login </h3>
+
+<p>First we need to install some packages on the client folder. These packages will help me with the user log in and they are jwt-decode and react-google-login. For the backend, you need to install bcryptjs
+and jsonwebtoken in the server folder. I need to add a proper NavBar in order to incoprate the log in function so I can apply a button that will redirect the user to a login form. First I need to remove some of the code I have in the app.js and place it into a designated App bar function. After this and place the proper function, I think will start with the Google Oauth log in which is imported with a package. After the package, I created the component in the sign in form. After setting up everything with the developer google site, then we can try to log in and see if there is a response in the console. Since the procress is using an async funtion, we can use the try and catch method. When it is succeful we will use dispatch(redux) to perform an action and in this case, set the id into localstorage so users dont have always relog. After setting it to local storage, for a good user experience I redirected the user to the page. I tried this at first with useHistory but found that it was outdated. Instead, using navigate from react-router-dom to do the same action.  
+
+
+<p>With the JWT, I need to first be able to record all the data with the forms. I tested this with several functions and at first I wasn't getting it to work with the password in the sign in because I forgot the handleChange function on the input field. After I made sure I can change the initialState I created with the form, I started to create the back-end portion for the JWT to be used. First, the routes have to be made and then brought in with the server file. After the routes are set up, for the signin and signup, need to make a users file in the controllers to handle the requests to the backend. To send the requests, I need to make sure I am retrieveing them fron the front end and since it is an async block, I can use a try/catch to hold most of the logic. I need to first find if a user exists with 'await User.findOne({email});' and then if does not exist, should return a message. This kind of process will be done for the rest of the signin and will be very similar to the signup.
+
+</p>
+
+
+<h3>Redux Workflow</h3>
+<p>First, everything happens with the form which is in the Auth component. Once all the inputs are typed, we want to dispatch a certain action which has something to do with redux. An example is the process of Sign-In as a new user. In the Sign-In, we are dispatching two things, the formData which is being send with a handleChange function and then sending the user to the homepage. Once we dispatch, we are going to the actions which will make another action in our actions folder. However, it goes to another step to our API so it makes a post request that gets some data. After getting some data, we will dispatch a type of Auth for both signIn and signUp.</p>
+  
