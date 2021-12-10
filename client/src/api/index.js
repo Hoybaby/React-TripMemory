@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({baseURL: 'https://memory-react-card.herokuapp.com/posts'});
+const API = axios.create({baseURL: 'https://memory-react-card.herokuapp.com'});
 
 // this is going to be a function on each of our requests.
 // the callback function gets a request, we have to send our token to our backend so our middleware can validate it.
